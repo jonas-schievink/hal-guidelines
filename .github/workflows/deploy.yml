@@ -14,5 +14,4 @@ jobs:
     - name: Deploy MDBook
       uses: XAMPPRocky/deploy-mdbook@v1
       with:
-        repository: jonas-schievink/hal-guidelines
-        token: ${{ secrets.TOKEN }}
+        token: ${{ secrets.GITHUB_TOKEN }}
