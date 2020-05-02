@@ -1,0 +1,3 @@
+[book]
+title = "Embedded Rust HAL Guidelines"
+description = "This is a set of recommendations on how to design and present Rust HALs for microcontrollers."
