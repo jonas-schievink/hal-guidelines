@@ -1,4 +1,4 @@
-# Embedded Rust HAL Guidelines
+# (unofficial) Embedded Rust HAL Guidelines
 
 This is a set of guidelines for writing hardware abstraction layers (HALs) for
 microcontrollers in Rust. These guidelines are intended to be used in addition
