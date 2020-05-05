@@ -346,9 +346,6 @@ to prevent use of pins in incorrect states.</p>
 way, using additional type parameters.</p>
 <p>Methods for changing the pin state should be provided as <code>into_input</code> and
 <code>into_output</code> methods.</p>
-<p>An <code>erase_state</code> method for erasing the type information (replacing it with an
-<code>Unknown</code> type) should be provided for making pins in different states
-interoperable.</p>
 <p>Additionally, <code>with_{input,output}_state</code> methods should be provided that
 temporarily reconfigure a pin in a different state without moving it.</p>
 <p>The following methods should be provided for every pin type (that is, both
@@ -356,7 +353,6 @@ erased and non-erased pin types should provide the same API):</p>
 <ul>
 <li><code>pub fn into_input&lt;N: InputState&gt;(self, input: N) -&gt; Pin&lt;N&gt;</code></li>
 <li><code>pub fn into_output&lt;N: OutputState&gt;(self, output: N) -&gt; Pin&lt;N&gt;</code></li>
-<li><code>pub fn erase_state(self) -&gt; Pin&lt;Unknown&gt;</code></li>
 <li>
 <pre><code>pub fn with_input_state&lt;N: InputState, R&gt;(
     &amp;mut self,
@@ -391,10 +387,6 @@ pub trait OutputState: sealed::Sealed {}
 pub trait InputState: sealed::Sealed {
     // ...
 }
-
-pub struct Unknown;
-
-impl PinState for Unknown {}
 
 pub struct Output&lt;S: OutputState&gt; {
     _p: PhantomData&lt;S&gt;,
@@ -448,10 +440,6 @@ impl&lt;S: PinState&gt; PA1&lt;S&gt; {
         output: N,
         f: impl FnOnce(&amp;mut PA1&lt;N&gt;) -&gt; R,
     ) -&gt; R {
-        todo!()
-    }
-
-    pub fn erase_state(self) -&gt; PA1&lt;Unknown&gt; {
         todo!()
     }
 }
